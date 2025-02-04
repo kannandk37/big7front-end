@@ -9,3 +9,11 @@ npm install
 # change the based url value to the api running url in ./src/service/index.ts
 
 baseURL=''
+
+# to build application
+
+npm run build
+
+# to run application
+
+npm run start
