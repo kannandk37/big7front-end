@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import axiosinstance from "@/service";
+import { DateTime } from "luxon";
 
 export default function Dashboard() {
   const router = useRouter();
@@ -70,6 +71,7 @@ export default function Dashboard() {
         <thead>
           <tr>
             <th>Name</th>
+            <th>Profile Pic</th>
             <th>Email</th>
             <th>Role</th>
             <th>Created At</th>
@@ -80,9 +82,24 @@ export default function Dashboard() {
           {users.map((user: any) => (
             <tr key={user.email}>
               <td>{user.name}</td>
+              <td>
+                <div>
+                  <img
+                    src={user.profilePic}
+                    alt="Description of the image"
+                    width={70}
+                    height={70}
+                  />
+                </div>
+                {user.ProfilePic}
+              </td>
               <td>{user.email}</td>
               <td>{user.role}</td>
-              <td>{user.created_at}</td>
+              <td>
+                {DateTime.fromJSDate(new Date(user.created_at)).toFormat(
+                  "yyyy-MM-dd"
+                )}
+              </td>
               <td>
                 <button
                   className="btn btn-warning btn-sm mx-1"
